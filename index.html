@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WWII Study Guide — Unit 4: A World at War</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --bg-elevated: rgba(255,255,255,0.8);
+      --card: #ffffff;
+      --card-muted: #f8fafc;
+      --text: #18202b;
+      --text-soft: #516072;
+      --border: #e5e7eb;
+      --border-strong: #d1d5db;
+      --shadow: 0 14px 38px rgba(17, 24, 39, 0.08);
+      --shadow-soft: 0 8px 24px rgba(17, 24, 39, 0.06);
+
+      --primary: #f4c542;
+      --primary-strong: #e2ad11;
+      --primary-soft: #fff3bf;
+      --primary-ring: rgba(244, 197, 66, 0.28);
+
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+
+      --max-width: 1100px;
+      --header-h: 74px;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #0c1118;
+      --bg-elevated: rgba(17, 24, 39, 0.82);
+      --card: #111827;
+      --card-muted: #0f172a;
+      --text: #f8fafc;
+      --text-soft: #a6b2c3;
+      --border: #1f2937;
+      --border-strong: #334155;
+      --shadow: 0 18px 48px rgba(0,0,0,0.38);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.28);
+      --primary-soft: rgba(244, 197, 66, 0.12);
+      --primary-ring: rgba(244, 197, 66, 0.22);
+      --success-soft: rgba(22, 163, 74, 0.16);
+      --danger-soft: rgba(220, 38, 38, 0.16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(244, 197, 66, 0.12), transparent 32%),
+        radial-gradient(circle at top right, rgba(244, 197, 66, 0.07), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a, button, input {
+      font: inherit;
+    }
+
+    button {
+      border: none;
+      background: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0.85rem 1rem;
+      background: var(--primary);
+      color: #111827;
+      transform: translateY(-110%);
+      z-index: 9999;
+      transition: transform 0.2s ease;
+      border-radius: 0 0 12px 0;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner,
+    .hero-inner,
+    .content-shell,
+    .footer-inner {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-width: 0;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .site-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+    }
+
+    .logo-copy {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .logo-title {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-subtitle {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 0.4rem;
+      padding: 0.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-link {
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      color: var(--text-soft);
+      font-weight: 600;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: var(--primary);
+      color: #111827;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+    }
+
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    .hero {
+      padding: 2.5rem 0 1.25rem;
+    }
+
+    .hero-panel {
+      background:
+        linear-gradient(135deg, rgba(244, 197, 66, 0.16), rgba(255,255,255,0) 60%),
+        var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      padding: clamp(1.5rem, 2.2vw, 2.5rem);
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.42rem 0.75rem;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--text);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 0.65rem;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn,
+    .btn-secondary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 46px;
+      padding: 0.85rem 1.1rem;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: #111827;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+    }
+
+    .btn:hover,
+    .btn-secondary:hover,
+    .btn-ghost:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-soft);
+      border: 1px solid var(--border);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat {
+      background: var(--card-muted);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+    }
+
+    .stat-value {
+      font-size: 1.65rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .content-shell {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .panel,
+    .quiz-shell {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-head {
+      padding: 1.3rem 1.3rem 0;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+    }
+
+    .panel-subtitle {
+      margin: 0.45rem 0 0;
+      color: var(--text-soft);
+    }
+
+    .toolbar {
+      padding: 1.25rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .search-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--card-muted);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary-strong);
+      box-shadow: 0 0 0 4px var(--primary-ring);
+    }
+
+    .toolbar-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
+    .tiny-stats {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .tiny-stats strong {
+      color: var(--text);
+    }
+
+    .section-stack,
+    .quiz-stack {
+      padding: 0 1.25rem 1.25rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .section-card {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card-muted);
+      overflow: hidden;
+    }
+
+    .section-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      text-align: left;
+    }
+
+    .section-label-group {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      min-width: 0;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      height: 42px;
+      padding: 0 0.75rem;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      color: var(--text);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .section-name {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      gap: 0.22rem;
+    }
+
+    .section-name strong {
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-name span {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .chevron {
+      transition: transform 0.2s ease;
+      color: var(--text-soft);
+      flex-shrink: 0;
+    }
+
+    .section-toggle[aria-expanded="true"] .chevron,
+    .term-toggle[aria-expanded="true"] .chevron {
+      transform: rotate(180deg);
+      color: var(--text);
+    }
+
+    .section-body {
+      padding: 0 1rem 1rem;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .term-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .term-toggle {
+      width: 100%;
+      padding: 1rem 1rem;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .term-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.32rem;
+      min-width: 0;
+    }
+
+    .term-title strong {
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .term-title span {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .term-body {
+      padding: 0 1rem 1rem;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border);
+    }
+
+    .term-body p {
+      margin: 0.9rem 0 0;
+    }
+
+    .empty-state,
+    .quiz-intro,
+    .quiz-card,
+    .summary-card {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .empty-state,
+    .quiz-intro,
+    .summary-card {
+      padding: 1.4rem;
+    }
+
+    .empty-state p,
+    .quiz-intro p,
+    .summary-card p {
+      color: var(--text-soft);
+      margin-top: 0.55rem;
+    }
+
+    .mono {
+      font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+
+    .quiz-shell {
+      overflow: hidden;
+    }
+
+    .quiz-progress {
+      padding: 1.2rem 1.25rem 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: var(--card-muted);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), #ffd95e);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .quiz-stack {
+      padding: 1.25rem;
+    }
+
+    .quiz-card {
+      padding: 1.4rem;
+    }
+
+    .quiz-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-question {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 0.9rem;
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--card-muted);
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .option-btn:hover:not([disabled]) {
+      transform: translateY(-1px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .option-btn[disabled] {
+      cursor: default;
+    }
+
+    .option-pill {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      background: var(--card);
+      flex-shrink: 0;
+    }
+
+    .option-btn.correct {
+      border-color: rgba(22, 163, 74, 0.38);
+      background: var(--success-soft);
+    }
+
+    .option-btn.correct .option-pill {
+      border-color: rgba(22, 163, 74, 0.35);
+      background: rgba(255,255,255,0.7);
+      color: var(--success);
+    }
+
+    .option-btn.incorrect {
+      border-color: rgba(220, 38, 38, 0.36);
+      background: var(--danger-soft);
+    }
+
+    .option-btn.incorrect .option-pill {
+      border-color: rgba(220, 38, 38, 0.35);
+      color: var(--danger);
+      background: rgba(255,255,255,0.7);
+    }
+
+    .option-btn.dimmed {
+      opacity: 0.72;
+    }
+
+    .feedback {
+      margin-top: 1.15rem;
+      padding: 1rem 1rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--card-muted);
+    }
+
+    .feedback strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+
+    .feedback p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .quiz-actions {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .summary-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+
+    .score-badge {
+      min-width: 150px;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(244, 197, 66, 0.18), rgba(244, 197, 66, 0.08));
+      border: 1px solid var(--border);
+    }
+
+    .score-badge strong {
+      display: block;
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .score-badge span {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .review-item {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card-muted);
+      overflow: hidden;
+    }
+
+    .review-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1rem;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .review-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .review-copy {
+      min-width: 0;
+      display: grid;
+      gap: 0.28rem;
+    }
+
+    .review-copy strong {
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+    }
+
+    .review-copy span {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+    .review-status {
+      flex-shrink: 0;
+      padding: 0.4rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .review-status.correct {
+      background: var(--success-soft);
+      color: var(--success);
+      border-color: rgba(22, 163, 74, 0.25);
+    }
+
+    .review-status.incorrect {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border-color: rgba(220, 38, 38, 0.25);
+    }
+
+    .review-body {
+      padding: 0 1rem 1rem;
+      color: var(--text-soft);
+      border-top: 1px solid var(--border);
+    }
+
+    .review-body p {
+      margin: 0.85rem 0 0;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: transparent;
+    }
+
+    .footer-inner {
+      padding: 1.2rem 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.85rem;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 900px) {
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .header-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.8rem 0;
+      }
+
+      .logo-group {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .progress-meta,
+      .summary-header,
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .option-btn {
+        grid-template-columns: 1fr;
+      }
+
+      .option-pill {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-group">
+        <div class="logo-badge" aria-hidden="true">
+          <img src="logo.svg" alt="Logo" class="site-logo" />
+        </div>
+        <div class="logo-copy">
+          <div class="logo-title">WWII Study Guide</div>
+          <div class="logo-subtitle">Unit 4 · A World at War</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <nav class="header-nav" aria-label="Primary">
+          <button class="nav-link active" data-view-target="terms">Terms</button>
+          <button class="nav-link" data-view-target="quiz">Quiz</button>
+        </nav>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-inner hero-panel">
+        <div class="hero-label">Modern World History</div>
+
+        <div class="hero-copy">
+          <h1>A World at War</h1>
+        </div>
+
+        <div class="hero-actions-row">
+          <button class="btn" id="heroTermsBtn">Browse Terms</button>
+          <button class="btn-secondary" id="heroQuizBtn">Take the Quiz</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value" id="termCount">0</span>
+            <span class="stat-label">Total terms</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="visibleCount">0</span>
+            <span class="stat-label">Visible now</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="quizCount">0</span>
+            <span class="stat-label">Quiz questions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-shell">
+      <section class="view active" id="termsView" aria-labelledby="termsHeading">
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title" id="termsHeading">Term Definitions</h2>
+            <p class="panel-subtitle">
+              Search by term name, then expand cards to see fuller AP-level definitions and historical significance.
+            </p>
+          </div>
+
+          <div class="toolbar">
+            <div class="search-wrap">
+              <input
+                id="searchInput"
+                class="search-input"
+                type="text"
+                placeholder="Search terms like 'appeasement', 'D-Day', or 'Yalta'..."
+                aria-label="Search terms"
+              />
+              <button class="btn-secondary" id="clearSearchBtn">Clear</button>
+            </div>
+
+            <div class="toolbar-row">
+              <div class="tiny-stats">
+                <span><strong id="visibleTiny">0</strong> visible</span>
+                <span><strong id="totalTiny">0</strong> total</span>
+                <span><strong id="sectionTiny">0</strong> sections</span>
+              </div>
+              <div class="mono">Tip: each section and each term works like an accordion.</div>
+            </div>
+          </div>
+
+          <div class="section-stack" id="termsSections"></div>
+        </div>
+      </section>
+
+      <section class="view" id="quizView" aria-labelledby="quizHeading">
+        <div class="quiz-shell">
+          <div class="panel-head">
+            <h2 class="panel-title" id="quizHeading">AP-Level Practice Quiz</h2>
+            <p class="panel-subtitle">
+              Questions appear one at a time. After you answer, the explanation appears immediately, and you can move on when ready.
+            </p>
+          </div>
+
+          <div class="quiz-progress">
+            <div class="progress-meta">
+              <span id="progressLabel">Ready to begin</span>
+              <span id="scoreLabel">0 answered</span>
+            </div>
+            <div class="progress-bar" aria-hidden="true">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <div class="quiz-stack" id="quizPanel"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Unit 4: A World at War — Modern World History</span>
+      <span>Interactive terms + AP-level practice quiz</span>
+    </div>
+  </footer>
+
+  <script>
+    const sections = [
+      {
+        id: "road",
+        title: "Road to War",
+        summary: "Aggression, appeasement, alliances, and the breakdown of collective security.",
+        terms: [
+          {
+            term: "Mukden Incident (1931)",
+            definition: "A staged explosion along the Japanese-controlled South Manchuria Railway near Mukden (modern Shenyang), carried out by Japanese military officers as a false-flag pretext to invade and occupy Manchuria. The League of Nations condemned Japan's aggression, but its inability to enforce consequences exposed the League's weakness and emboldened future aggressors."
+          },
+          {
+            term: "Manchukuo (1932–1945)",
+            definition: "The Japanese puppet state established in Manchuria after the Mukden Incident, nominally headed by Puyi, the last Qing emperor. In reality, Japan controlled all political, economic, and military decisions, using Manchukuo as a resource base and as a model for broader imperial expansion in East Asia."
+          },
+          {
+            term: "Lebensraum",
+            definition: "German for 'living space,' this concept was central to Nazi ideology and Hitler's foreign policy. Rooted in racial theory and social Darwinism, it argued that Germans needed to expand eastward into lands such as Poland and the Soviet Union to gain resources and territory."
+          },
+          {
+            term: "Remilitarization of the Rhineland (1936)",
+            definition: "Hitler sent German troops into the demilitarized Rhineland in direct violation of the Treaty of Versailles. France and Britain protested but did not intervene militarily, reinforcing Hitler's belief that the Western democracies would not stop further territorial aggression by force."
+          },
+          {
+            term: "Nuremberg Laws (1935)",
+            definition: "These antisemitic laws stripped Jews of German citizenship and banned marriage or sexual relations between Jews and non-Jewish Germans. They transformed Nazi racial ideology into official law and marked a major escalation from prejudice to legalized oppression."
+          },
+          {
+            term: "Anschluss (March 1938)",
+            definition: "The annexation of Austria into Nazi Germany, achieved through political pressure, Nazi agitation inside Austria, and the threat of military invasion. It violated the post-WWI settlement yet again met no military response from the Western powers."
+          },
+          {
+            term: "Munich Conference (September 1938)",
+            definition: "A meeting among Hitler, Mussolini, Neville Chamberlain, and Édouard Daladier to settle the Sudeten crisis. Germany was allowed to annex the Sudetenland, while Czechoslovakia was excluded from the negotiations; Hitler then violated the agreement within months by seizing the rest of Czechoslovakia."
+          },
+          {
+            term: "Appeasement",
+            definition: "A diplomatic strategy, used mainly by Britain and France in the 1930s, of making concessions to aggressive dictators in hopes of avoiding war. Supporters argued it bought time and reflected war weariness, but critics argued it encouraged Hitler by signaling that aggression would go unpunished."
+          },
+          {
+            term: "Nazi-Soviet Non-Aggression Pact (August 1939)",
+            definition: "A shocking agreement between Nazi Germany and the Soviet Union in which both states publicly promised not to attack each other. Its secret protocol divided Eastern Europe into spheres of influence, clearing the way for Germany's invasion of Poland without the danger of an immediate two-front war."
+          },
+          {
+            term: "Axis Powers",
+            definition: "The alliance of Nazi Germany, Fascist Italy, and Imperial Japan, formalized through the Tripartite Pact of 1940. The Axis was united by expansionism, hostility to the existing international order, and anti-communism, though practical cooperation varied by theater."
+          },
+          {
+            term: "Allied Powers",
+            definition: "The coalition opposing the Axis, centered on Great Britain, the Soviet Union, the United States, and Free France. The alliance was based less on shared ideology than on a shared need to defeat Axis aggression, and those tensions later contributed to the Cold War."
+          }
+        ]
+      },
+      {
+        id: "asia",
+        title: "Asian Theater",
+        summary: "War in China and the Pacific, strategic bombing, and the end of the war against Japan.",
+        terms: [
+          {
+            term: "Rape of Nanjing (1937–1938)",
+            definition: "A mass atrocity committed by Japanese troops after capturing the Chinese capital of Nanjing. Over roughly six weeks, Japanese soldiers murdered hundreds of thousands of civilians and prisoners of war and committed widespread sexual violence, making the event a lasting issue in East Asian historical memory."
+          },
+          {
+            term: "Pearl Harbor (December 7, 1941)",
+            definition: "A surprise Japanese attack on the U.S. naval base at Pearl Harbor in Hawaii, intended to cripple American naval power in the Pacific. Instead of breaking American resolve, the attack unified public opinion and brought the United States fully into World War II."
+          },
+          {
+            term: "Island Hopping",
+            definition: "A U.S. strategy in the Pacific of capturing strategically important islands while bypassing heavily fortified ones. This allowed Allied forces to build air and naval bases, conserve resources, and move closer to Japan without attacking every enemy-held position."
+          },
+          {
+            term: "Firebombing of Tokyo (March 1945)",
+            definition: "Operation Meetinghouse, a massive U.S. incendiary bombing raid on Tokyo that killed about 100,000 civilians and destroyed large sections of the city. It reflected a broader shift toward strategic bombing aimed at urban destruction, industrial capacity, and civilian morale."
+          },
+          {
+            term: "Hiroshima and Nagasaki (August 6 and 9, 1945)",
+            definition: "The U.S. atomic bombings of two Japanese cities using nuclear weapons. Supporters argue the bombings shortened the war and avoided a costly invasion, while critics contend they were unnecessary or disproportionate attacks on civilians given Japan's deteriorating position."
+          },
+          {
+            term: "V-J Day (August 15 / September 2, 1945)",
+            definition: "Victory over Japan Day, marking the end of the war in the Pacific. August 15 refers to Emperor Hirohito's announcement of surrender, while September 2 marks the formal surrender ceremony aboard the USS Missouri."
+          }
+        ]
+      },
+      {
+        id: "europe",
+        title: "European Theater",
+        summary: "Blitzkrieg, collaboration, genocide, total war, and Allied victory in Europe.",
+        terms: [
+          {
+            term: "Blitzkrieg",
+            definition: "German for 'lightning war,' a strategy combining fast-moving armor, motorized infantry, and close air support to create rapid breakthroughs and encirclements. It was highly effective early in the war but less successful in the vast distances and harsh conditions of the Soviet Union."
+          },
+          {
+            term: "Vichy France (1940–1944)",
+            definition: "The collaborationist French government established after France's defeat in 1940 and led by Marshal Philippe Pétain. It governed unoccupied southern France and actively cooperated with Nazi Germany, including participating in the deportation of Jews."
+          },
+          {
+            term: "Winston Churchill (1874–1965)",
+            definition: "British prime minister from 1940 to 1945 and a key symbol of Allied resistance to Nazi Germany. His speeches helped sustain British morale during the Battle of Britain and the Blitz, and he played a major role in the Grand Alliance despite sharp disagreements with both Roosevelt and Stalin."
+          },
+          {
+            term: "Battle of Britain and the Blitz (1940–1941)",
+            definition: "The Battle of Britain was Germany's air campaign against the RAF in 1940, aimed at gaining air superiority before an invasion. When that failed, Germany turned to the Blitz, a prolonged bombing campaign against British cities that caused heavy civilian casualties but failed to break British resistance."
+          },
+          {
+            term: "German Invasion of the USSR (Operation Barbarossa, June 1941)",
+            definition: "The largest military invasion in history, launched by Germany and its allies against the Soviet Union. It opened the Eastern Front, where the war became even more destructive and where Germany ultimately suffered the majority of its military losses."
+          },
+          {
+            term: "The Grand Alliance",
+            definition: "The wartime partnership of the United States, Great Britain, and the Soviet Union. It united states with very different systems and goals, and the underlying tensions over strategy and postwar Europe foreshadowed the Cold War."
+          },
+          {
+            term: "The Holocaust",
+            definition: "The systematic genocide of approximately six million European Jews by Nazi Germany and its collaborators. Other targeted groups included Roma, disabled people, homosexuals, and political prisoners, and the Holocaust profoundly shaped postwar ideas about human rights, genocide, and international law."
+          },
+          {
+            term: "Final Solution (Endlösung)",
+            definition: "The Nazi plan for the systematic extermination of Europe's Jews, formalized at the Wannsee Conference in 1942. The term was a bureaucratic euphemism masking a coordinated program of industrialized mass murder in extermination camps."
+          },
+          {
+            term: "Firebombing of Dresden (February 1945)",
+            definition: "A controversial Allied bombing campaign against Dresden that produced a firestorm and killed tens of thousands. Historians continue to debate whether the city's destruction was militarily necessary or an excessive attack on civilians and cultural heritage."
+          },
+          {
+            term: "D-Day (June 6, 1944)",
+            definition: "The Allied invasion of Normandy in Operation Overlord, which opened the long-awaited Western Front in Europe. It established a foothold in France, accelerated the liberation of Western Europe, and forced Germany to fight major fronts both east and west."
+          },
+          {
+            term: "V-E Day (May 8, 1945)",
+            definition: "Victory in Europe Day, marking Nazi Germany's unconditional surrender. It ended the war in Europe but also began the enormous challenges of reconstruction, displaced populations, and the emerging division of the continent."
+          }
+        ]
+      },
+      {
+        id: "postwar",
+        title: "Post-WWII Order",
+        summary: "Settlements, occupation, international law, human rights, and the Cold War order.",
+        terms: [
+          {
+            term: "Yalta Conference (February 1945)",
+            definition: "A meeting of Roosevelt, Churchill, and Stalin to coordinate the final stage of the war and plan the postwar settlement. Agreements included occupation zones in Germany, a promise of free elections in Eastern Europe, Soviet entry into the war against Japan, and support for the United Nations."
+          },
+          {
+            term: "Division of Germany",
+            definition: "After Germany's surrender, it was divided into four occupation zones controlled by the United States, Britain, France, and the Soviet Union. By 1949 this evolved into West Germany and East Germany, making Germany the clearest geographic symbol of the Cold War divide in Europe."
+          },
+          {
+            term: "Nuremberg and Tokyo Trials",
+            definition: "Postwar military tribunals that prosecuted Axis leaders for war crimes, crimes against peace, and crimes against humanity. These trials established the principle that individuals, including top political leaders, could be held personally responsible under international law."
+          },
+          {
+            term: "UN Universal Declaration of Human Rights (1948)",
+            definition: "A landmark statement adopted by the United Nations proclaiming universal rights such as life, liberty, education, and freedom from torture. Although not legally binding on its own, it became a foundational moral and political framework for later human rights law."
+          },
+          {
+            term: "NATO and Warsaw Pact",
+            definition: "The two major military alliances of the Cold War. NATO, formed in 1949, united Western democracies under collective defense, while the Warsaw Pact, formed in 1955, organized Soviet-aligned Eastern European states in direct opposition."
+          }
+        ]
+      }
+    ];
+
+    const quizBank = [
+      {
+        prompt: "The Mukden Incident of 1931 is historically significant primarily because it",
+        options: [
+          "led to the immediate outbreak of World War II in Asia",
+          "demonstrated the League of Nations' inability to enforce collective security",
+          "resulted in a formal alliance between Japan and Nazi Germany",
+          "provoked the United States into imposing an oil embargo on Japan"
+        ],
+        answer: "demonstrated the League of Nations' inability to enforce collective security",
+        explanation: "Japan's staged attack and seizure of Manchuria exposed the League of Nations as ineffective at stopping aggression, which encouraged further revisionist expansion by authoritarian states."
+      },
+      {
+        prompt: "Which of the following best describes the concept of Lebensraum in Nazi ideology?",
+        options: [
+          "The belief that Germany needed to reclaim territories lost in the Treaty of Versailles",
+          "The doctrine that Aryan racial superiority required the conquest of eastern territories for settlement and resources",
+          "A diplomatic strategy for negotiating colonial possessions in Africa",
+          "An economic policy focused on achieving industrial self-sufficiency within existing German borders"
+        ],
+        answer: "The doctrine that Aryan racial superiority required the conquest of eastern territories for settlement and resources",
+        explanation: "Lebensraum was not just territorial revision. It was a racially driven vision of conquest and colonization in Eastern Europe, especially at the expense of Slavic peoples."
+      },
+      {
+        prompt: "The significance of the Remilitarization of the Rhineland (1936) was that it",
+        options: [
+          "triggered an immediate military response from France and Britain",
+          "violated the Treaty of Versailles and revealed Western democracies' unwillingness to enforce it by force",
+          "was the first step in Hitler's plan to unite all German-speaking peoples",
+          "was secretly supported by the Soviet Union as part of the Nazi-Soviet Pact"
+        ],
+        answer: "violated the Treaty of Versailles and revealed Western democracies' unwillingness to enforce it by force",
+        explanation: "France and Britain had the capacity to respond but chose not to. That lack of action validated Hitler's gamble and encouraged bolder aggression."
+      },
+      {
+        prompt: "The Nuremberg Laws (1935) are best understood as",
+        options: [
+          "international laws created at the postwar Nuremberg Trials",
+          "economic regulations designed to exclude Jews from German industry",
+          "legislation that codified racial discrimination and stripped Jews of citizenship rights",
+          "wartime emergency decrees authorizing the deportation of Jews to camps"
+        ],
+        answer: "legislation that codified racial discrimination and stripped Jews of citizenship rights",
+        explanation: "The Nuremberg Laws turned Nazi antisemitic ideology into formal law, defining Jews by ancestry and excluding them from citizenship long before the war's extermination phase."
+      },
+      {
+        prompt: "A historian arguing that the Munich Conference (1938) represented the failure of appeasement would most likely cite which evidence?",
+        options: [
+          "Hitler honored the agreement by not seeking further territorial expansion",
+          "Czechoslovakia was not represented at the negotiations and Hitler violated the agreement within six months",
+          "The agreement successfully prevented the outbreak of war for over a decade",
+          "Britain and France used the time gained to build military superiority over Germany"
+        ],
+        answer: "Czechoslovakia was not represented at the negotiations and Hitler violated the agreement within six months",
+        explanation: "Munich became the classic example of appeasement failing because the victim state was excluded and Hitler quickly broke his promise by taking the rest of Czechoslovakia."
+      },
+      {
+        prompt: "The Nazi-Soviet Non-Aggression Pact (1939) was strategically important primarily because it",
+        options: [
+          "created a lasting alliance between Germany and the Soviet Union based on shared ideology",
+          "allowed Germany to invade Poland without the risk of a two-front war",
+          "guaranteed Soviet neutrality throughout the entire duration of World War II",
+          "was the first formal diplomatic agreement between a fascist and communist state"
+        ],
+        answer: "allowed Germany to invade Poland without the risk of a two-front war",
+        explanation: "Hitler's immediate gain was freedom to attack Poland without facing simultaneous war on both eastern and western fronts."
+      },
+      {
+        prompt: "The Rape of Nanjing (1937–1938) is significant in the broader context of WWII because it",
+        options: [
+          "prompted the United States to immediately declare war on Japan",
+          "demonstrated the extreme brutality of Japan's war in China and remains contested in East Asian historical memory",
+          "was the first instance of genocide in the twentieth century",
+          "led directly to the formation of the Allied Powers"
+        ],
+        answer: "demonstrated the extreme brutality of Japan's war in China and remains contested in East Asian historical memory",
+        explanation: "The massacre revealed the scale of violence in the Sino-Japanese War and continues to shape historical memory and regional politics."
+      },
+      {
+        prompt: "The U.S. strategy of island hopping in the Pacific was designed to",
+        options: [
+          "invade every Japanese-held island to ensure no enemy forces remained behind Allied lines",
+          "capture strategically important islands for use as air and naval bases while bypassing heavily fortified positions",
+          "avoid direct combat with Japanese forces by relying solely on naval blockades",
+          "focus exclusively on liberating European colonial territories in Southeast Asia"
+        ],
+        answer: "capture strategically important islands for use as air and naval bases while bypassing heavily fortified positions",
+        explanation: "Island hopping was a selective strategy that conserved resources by skipping heavily defended positions and focusing on islands with strategic value."
+      },
+      {
+        prompt: "Which of the following best explains why the atomic bombings of Hiroshima and Nagasaki remain historically controversial?",
+        options: [
+          "Historians agree the bombings were unnecessary since Japan had already formally surrendered",
+          "The debate centers on whether the bombings were militarily justified or constituted disproportionate force against civilians",
+          "The bombings had no significant impact on Japan's decision to surrender",
+          "The controversy stems from the fact that only one of the two bombings was authorized by President Truman"
+        ],
+        answer: "The debate centers on whether the bombings were militarily justified or constituted disproportionate force against civilians",
+        explanation: "The debate focuses on whether the bombings shortened the war and avoided invasion or whether they amounted to unnecessary mass killing of civilians."
+      },
+      {
+        prompt: "Blitzkrieg as a military strategy was most effective when",
+        options: [
+          "used in prolonged wars of attrition against well-supplied defenders",
+          "deployed over vast distances against an enemy willing to trade space for time",
+          "concentrated armor and air power could achieve rapid breakthroughs before the enemy organized a coordinated defense",
+          "supported by overwhelming naval superiority"
+        ],
+        answer: "concentrated armor and air power could achieve rapid breakthroughs before the enemy organized a coordinated defense",
+        explanation: "Blitzkrieg depended on speed, concentration, and disorientation. It was strongest when defenders could not organize effectively before the breakthrough expanded."
+      },
+      {
+        prompt: "Vichy France is historically significant because it demonstrates that",
+        options: [
+          "all French citizens actively resisted German occupation",
+          "collaboration with an occupying power can involve active participation in its crimes, including the deportation of Jews",
+          "democratic governments cannot be replaced by authoritarian regimes",
+          "France maintained full sovereignty throughout the war"
+        ],
+        answer: "collaboration with an occupying power can involve active participation in its crimes, including the deportation of Jews",
+        explanation: "Vichy shows that collaboration was not passive accommodation alone; it included active involvement in persecution and deportation."
+      },
+      {
+        prompt: "Operation Barbarossa (1941) transformed the nature of World War II primarily because it",
+        options: [
+          "opened the Eastern Front, which would become the war's largest and deadliest theater",
+          "led to an immediate Soviet surrender and German control of all Eastern Europe",
+          "caused the United States to enter the war against Germany",
+          "was the first time Germany had violated an international agreement"
+        ],
+        answer: "opened the Eastern Front, which would become the war's largest and deadliest theater",
+        explanation: "The invasion of the USSR turned the conflict into a vast war of attrition on the Eastern Front, where Germany ultimately suffered most of its military losses."
+      },
+      {
+        prompt: "The term 'Final Solution' (Endlösung) is historically significant because it",
+        options: [
+          "referred to the Nazi plan for Jewish emigration to Palestine",
+          "represented the bureaucratic planning of systematic genocide, formalized at the Wannsee Conference",
+          "was a postwar term invented by Allied prosecutors at Nuremberg",
+          "described the final military strategy used to defeat the Soviet Union"
+        ],
+        answer: "represented the bureaucratic planning of systematic genocide, formalized at the Wannsee Conference",
+        explanation: "The phrase masked genocide behind bureaucratic language and referred to the organized extermination of Jews across occupied Europe."
+      },
+      {
+        prompt: "D-Day (June 6, 1944) was a turning point in the European war primarily because it",
+        options: [
+          "was the first time Allied forces engaged German troops in combat",
+          "opened a second front in Western Europe, fulfilling a commitment to the Soviet Union and beginning the liberation of France",
+          "resulted in Germany's immediate unconditional surrender",
+          "demonstrated the superiority of airborne operations over amphibious assaults"
+        ],
+        answer: "opened a second front in Western Europe, fulfilling a commitment to the Soviet Union and beginning the liberation of France",
+        explanation: "D-Day relieved pressure on the Soviet Union, reopened major land combat in Western Europe, and launched the liberation of France."
+      },
+      {
+        prompt: "The Yalta Conference (1945) is often cited as a key moment in the origins of the Cold War because",
+        options: [
+          "Roosevelt and Churchill formally declared war on the Soviet Union",
+          "agreements on free elections in Eastern Europe were made but not ultimately honored by the Soviet Union",
+          "the United States refused to participate in the creation of the United Nations",
+          "Stalin agreed to withdraw all Soviet forces from Eastern Europe immediately after the war"
+        ],
+        answer: "agreements on free elections in Eastern Europe were made but not ultimately honored by the Soviet Union",
+        explanation: "Yalta exposed deep tensions over Eastern Europe, especially once Stalin did not permit the genuinely free elections that had been promised."
+      },
+      {
+        prompt: "The Nuremberg and Tokyo Trials established which precedent in international law?",
+        options: [
+          "Only soldiers, not political leaders, could be prosecuted for actions during wartime",
+          "Individuals, including heads of state, could be held personally accountable for war crimes and crimes against humanity",
+          "Nations that lost wars were required to pay unlimited reparations to the victors",
+          "'Following superior orders' was a complete defense against charges of war crimes"
+        ],
+        answer: "Individuals, including heads of state, could be held personally accountable for war crimes and crimes against humanity",
+        explanation: "Their most important legacy was the principle of individual accountability under international law, even for top political and military leaders."
+      },
+      {
+        prompt: "The UN Universal Declaration of Human Rights (1948) was most directly a response to",
+        options: [
+          "the economic devastation of the Great Depression",
+          "the atrocities of World War II and the Holocaust",
+          "the territorial disputes created by decolonization",
+          "the nuclear arms race between the United States and Soviet Union"
+        ],
+        answer: "the atrocities of World War II and the Holocaust",
+        explanation: "The declaration emerged from the moral shock of war crimes and genocide and aimed to establish universal standards for human dignity."
+      },
+      {
+        prompt: "NATO and the Warsaw Pact are best understood as",
+        options: [
+          "economic organizations designed to promote trade between member states",
+          "competing military alliances that embodied the Cold War's bipolar division of Europe",
+          "temporary wartime coalitions formed during World War II",
+          "international organizations created by the United Nations to maintain global peace"
+        ],
+        answer: "competing military alliances that embodied the Cold War's bipolar division of Europe",
+        explanation: "These alliances were military expressions of the Cold War divide, organizing Europe into opposing armed camps led by the United States and the Soviet Union."
+      },
+      {
+        prompt: "The Battle of Britain (1940) is historically significant because it",
+        options: [
+          "resulted in a successful German invasion of England",
+          "was the first major campaign fought entirely in the air and demonstrated that Germany could be resisted",
+          "led directly to the United States' entry into the war",
+          "ended with a negotiated peace between Britain and Germany"
+        ],
+        answer: "was the first major campaign fought entirely in the air and demonstrated that Germany could be resisted",
+        explanation: "The RAF's success showed Germany was not unbeatable and forced Hitler to abandon immediate invasion plans."
+      },
+      {
+        prompt: "A key difference between the firebombing of Tokyo and the atomic bombings of Hiroshima and Nagasaki was that",
+        options: [
+          "the firebombing of Tokyo actually killed more people in a single raid than either individual atomic bombing",
+          "the atomic bombings targeted military installations while the firebombing targeted civilians",
+          "the firebombing of Tokyo was condemned by the Allies as a war crime",
+          "the atomic bombings had no impact on Japan's decision to surrender"
+        ],
+        answer: "the firebombing of Tokyo actually killed more people in a single raid than either individual atomic bombing",
+        explanation: "The March 1945 Tokyo raid killed roughly 100,000 people in one night, which exceeded the immediate death toll of either Hiroshima or Nagasaki individually."
+      },
+      {
+        prompt: "The division of Germany after WWII became significant in Cold War history because it",
+        options: [
+          "was a temporary arrangement that lasted only until 1950",
+          "became the most visible symbol of the Iron Curtain and the ideological division of Europe",
+          "was enthusiastically supported by all four occupying powers as a permanent solution",
+          "prevented any economic recovery in either German state"
+        ],
+        answer: "became the most visible symbol of the Iron Curtain and the ideological division of Europe",
+        explanation: "The split into West Germany and East Germany, along with divided Berlin, became the clearest geographic representation of Cold War Europe."
+      }
+    ];
+
+    const state = {
+      view: "terms",
+      filter: "",
+      sectionOpen: {},
+      termOpen: {},
+      quiz: null
+    };
+
+    sections.forEach(section => {
+      state.sectionOpen[section.id] = true;
+      state.termOpen[section.id] = null;
+    });
+
+    const termsView = document.getElementById("termsView");
+    const quizView = document.getElementById("quizView");
+    const termsSections = document.getElementById("termsSections");
+    const searchInput = document.getElementById("searchInput");
+    const clearSearchBtn = document.getElementById("clearSearchBtn");
+    const quizPanel = document.getElementById("quizPanel");
+    const progressLabel = document.getElementById("progressLabel");
+    const scoreLabel = document.getElementById("scoreLabel");
+    const progressFill = document.getElementById("progressFill");
+
+    const termCountEl = document.getElementById("termCount");
+    const visibleCountEl = document.getElementById("visibleCount");
+    const quizCountEl = document.getElementById("quizCount");
+    const visibleTinyEl = document.getElementById("visibleTiny");
+    const totalTinyEl = document.getElementById("totalTiny");
+    const sectionTinyEl = document.getElementById("sectionTiny");
+
+    const heroTermsBtn = document.getElementById("heroTermsBtn");
+    const heroQuizBtn = document.getElementById("heroQuizBtn");
+    const navButtons = [...document.querySelectorAll("[data-view-target]")];
+    const themeToggle = document.getElementById("themeToggle");
+
+    function flattenTerms() {
+      return sections.flatMap(section => section.terms);
+    }
+
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function setView(view) {
+      state.view = view;
+      const isTerms = view === "terms";
+      termsView.classList.toggle("active", isTerms);
+      quizView.classList.toggle("active", !isTerms);
+
+      navButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.viewTarget === view);
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function getFilteredSections() {
+      const query = state.filter.trim().toLowerCase();
+      if (!query) {
+        return sections.map(section => ({
+          ...section,
+          filteredTerms: section.terms
+        }));
+      }
+
+      return sections
+        .map(section => ({
+          ...section,
+          filteredTerms: section.terms.filter(term =>
+            term.term.toLowerCase().includes(query) ||
+            term.definition.toLowerCase().includes(query)
+          )
+        }))
+        .filter(section => section.filteredTerms.length > 0);
+    }
+
+    function updateCounts() {
+      const totalTerms = flattenTerms().length;
+      const visibleTerms = getFilteredSections().reduce((sum, section) => sum + section.filteredTerms.length, 0);
+
+      termCountEl.textContent = totalTerms;
+      visibleCountEl.textContent = visibleTerms;
+      quizCountEl.textContent = quizBank.length;
+      visibleTinyEl.textContent = visibleTerms;
+      totalTinyEl.textContent = totalTerms;
+      sectionTinyEl.textContent = sections.length;
+    }
+
+    function renderTerms() {
+      updateCounts();
+      const filteredSections = getFilteredSections();
+
+      if (!filteredSections.length) {
+        termsSections.innerHTML = `
+          <div class="empty-state">
+            <strong>No matching terms</strong>
+            <p>Try a broader search or clear the filter to show the full study guide again.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const queryActive = state.filter.trim().length > 0;
+
+      termsSections.innerHTML = filteredSections.map((section, sectionIndex) => {
+        const isOpen = queryActive ? true : state.sectionOpen[section.id];
+
+        return `
+          <article class="section-card">
+            <button
+              class="section-toggle"
+              data-section-toggle="${section.id}"
+              aria-expanded="${isOpen}"
+            >
+              <div class="section-label-group">
+                <div class="section-tag">${sectionIndex + 1}</div>
+                <div class="section-name">
+                  <strong>${section.title}</strong>
+                  <span>${section.filteredTerms.length} term${section.filteredTerms.length === 1 ? "" : "s"} · ${section.summary}</span>
+                </div>
+              </div>
+              <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            ${isOpen ? `
+              <div class="section-body">
+                ${section.filteredTerms.map((term, index) => {
+                  const termKey = `${section.id}::${term.term}`;
+                  const openKey = state.termOpen[section.id];
+                  const isTermOpen = openKey === termKey;
+                  return `
+                    <article class="term-card">
+                      <button
+                        class="term-toggle"
+                        data-term-toggle="${termKey}"
+                        data-section-id="${section.id}"
+                        aria-expanded="${isTermOpen}"
+                      >
+                        <div class="term-title">
+                          <strong>${term.term}</strong>
+                          <span>Click to expand definition</span>
+                        </div>
+                        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                      </button>
+                      ${isTermOpen ? `
+                        <div class="term-body">
+                          <p>${term.definition}</p>
+                        </div>
+                      ` : ""}
+                    </article>
+                  `;
+                }).join("")}
+              </div>
+            ` : ""}
+          </article>
+        `;
+      }).join("");
+
+      document.querySelectorAll("[data-section-toggle]").forEach(button => {
+        button.addEventListener("click", () => {
+          const sectionId = button.dataset.sectionToggle;
+          state.sectionOpen[sectionId] = !state.sectionOpen[sectionId];
+          renderTerms();
+        });
+      });
+
+      document.querySelectorAll("[data-term-toggle]").forEach(button => {
+        button.addEventListener("click", () => {
+          const sectionId = button.dataset.sectionId;
+          const termKey = button.dataset.termToggle;
+          state.termOpen[sectionId] = state.termOpen[sectionId] === termKey ? null : termKey;
+          renderTerms();
+        });
+      });
+    }
+
+    function buildQuizSession() {
+      return {
+        questions: shuffle(quizBank).map(question => ({
+          ...question,
+          options: shuffle(question.options)
+        })),
+        currentIndex: 0,
+        selections: []
+      };
+    }
+
+    function startQuiz() {
+      state.quiz = buildQuizSession();
+      renderQuiz();
+    }
+
+    function getAnsweredCount() {
+      if (!state.quiz) return 0;
+      return state.quiz.selections.filter(Boolean).length;
+    }
+
+    function getScore() {
+      if (!state.quiz) return 0;
+      return state.quiz.selections.filter(entry => entry && entry.correct).length;
+    }
+
+    function selectAnswer(optionText) {
+      const quiz = state.quiz;
+      const currentIndex = quiz.currentIndex;
+      if (quiz.selections[currentIndex]) return;
+
+      const question = quiz.questions[currentIndex];
+      quiz.selections[currentIndex] = {
+        selected: optionText,
+        correct: optionText === question.answer
+      };
+
+      renderQuiz();
+    }
+
+    function nextQuestion() {
+      const quiz = state.quiz;
+      if (!quiz) return;
+
+      if (quiz.currentIndex < quiz.questions.length - 1) {
+        quiz.currentIndex += 1;
+      } else {
+        quiz.currentIndex = quiz.questions.length;
+      }
+
+      renderQuiz();
+    }
+
+    function renderQuizProgress() {
+      if (!state.quiz) {
+        progressLabel.textContent = "Ready to begin";
+        scoreLabel.textContent = "0 answered";
+        progressFill.style.width = "0%";
+        return;
+      }
+
+      const answered = getAnsweredCount();
+      const total = state.quiz.questions.length;
+      const currentNumber = Math.min(state.quiz.currentIndex + 1, total);
+
+      if (state.quiz.currentIndex >= total) {
+        progressLabel.textContent = "Quiz complete";
+        scoreLabel.textContent = `${getScore()} correct out of ${total}`;
+        progressFill.style.width = "100%";
+      } else {
+        progressLabel.textContent = `Question ${currentNumber} of ${total}`;
+        scoreLabel.textContent = `${answered} answered`;
+        progressFill.style.width = `${(answered / total) * 100}%`;
+      }
+    }
+
+    function renderQuiz() {
+      renderQuizProgress();
+
+      if (!state.quiz) {
+        quizPanel.innerHTML = `
+          <div class="quiz-intro">
+            <strong>Start the AP-style practice set</strong>
+            <p>This quiz randomizes both the question order and the answer order each time you begin. You'll see the explanation immediately after each response, then a score report and review screen at the end.</p>
+            <div class="quiz-actions">
+              <button class="btn" id="startQuizBtn">Start Quiz</button>
+            </div>
+          </div>
+        `;
+        document.getElementById("startQuizBtn").addEventListener("click", startQuiz);
+        return;
+      }
+
+      const quiz = state.quiz;
+      const total = quiz.questions.length;
+
+      if (quiz.currentIndex >= total) {
+        const score = getScore();
+        const percent = Math.round((score / total) * 100);
+
+        quizPanel.innerHTML = `
+          <div class="summary-card">
+            <div class="summary-header">
+              <div>
+                <strong>Quiz complete</strong>
+                <p>You can review every question below or retake the quiz with a fresh randomized order.</p>
+              </div>
+              <div class="score-badge">
+                <strong>${score}/${total}</strong>
+                <span>${percent}% correct</span>
+              </div>
+            </div>
+
+            <div class="quiz-actions">
+              <button class="btn" id="retakeQuizTopBtn">Retake Quiz</button>
+              <button class="btn-secondary" id="backToTermsBtn">Back to Terms</button>
+            </div>
+
+            <div class="summary-list">
+              ${quiz.questions.map((question, index) => {
+                const result = quiz.selections[index];
+                return `
+                  <details class="review-item">
+                    <summary>
+                      <div class="review-copy">
+                        <strong>${index + 1}. ${question.prompt}</strong>
+                        <span>Your answer: ${result.selected}</span>
+                      </div>
+                      <span class="review-status ${result.correct ? "correct" : "incorrect"}">
+                        ${result.correct ? "Correct" : "Incorrect"}
+                      </span>
+                    </summary>
+                    <div class="review-body">
+                      <p><strong>Correct answer:</strong> ${question.answer}</p>
+                      <p><strong>Explanation:</strong> ${question.explanation}</p>
+                    </div>
+                  </details>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `;
+
+        document.getElementById("retakeQuizTopBtn").addEventListener("click", startQuiz);
+        document.getElementById("backToTermsBtn").addEventListener("click", () => setView("terms"));
+        return;
+      }
+
+      const question = quiz.questions[quiz.currentIndex];
+      const selection = quiz.selections[quiz.currentIndex];
+      const answered = Boolean(selection);
+      const letters = ["A", "B", "C", "D"];
+
+      quizPanel.innerHTML = `
+        <article class="quiz-card">
+          <div class="quiz-kicker">AP-style multiple choice</div>
+          <h3 class="quiz-question">${question.prompt}</h3>
+
+          <div class="option-list">
+            ${question.options.map((option, index) => {
+              let classes = ["option-btn"];
+              if (answered) {
+                if (option === question.answer) classes.push("correct");
+                if (option === selection.selected && option !== question.answer) classes.push("incorrect");
+                if (option !== question.answer && option !== selection.selected) classes.push("dimmed");
+              }
+
+              return `
+                <button
+                  class="${classes.join(" ")}"
+                  data-option="${encodeURIComponent(option)}"
+                  ${answered ? "disabled" : ""}
+                >
+                  <span class="option-pill">${letters[index]}</span>
+                  <span>${option}</span>
+                </button>
+              `;
+            }).join("")}
+          </div>
+
+          ${answered ? `
+            <div class="feedback">
+              <strong>${selection.correct ? "Correct" : "Not quite"}</strong>
+              <p>${question.explanation}</p>
+            </div>
+
+            <div class="quiz-actions">
+              <button class="btn" id="nextQuestionBtn">
+                ${quiz.currentIndex === total - 1 ? "See Results" : "Next Question"}
+              </button>
+              <button class="btn-secondary" id="restartQuizBtn">Restart Quiz</button>
+            </div>
+          ` : `
+            <div class="feedback">
+              <strong>Choose the best answer</strong>
+              <p>Focus on causation, significance, comparison, and contextualization rather than pure recall.</p>
+            </div>
+          `}
+        </article>
+      `;
+
+      document.querySelectorAll("[data-option]").forEach(button => {
+        button.addEventListener("click", () => {
+          selectAnswer(decodeURIComponent(button.dataset.option));
+        });
+      });
+
+      const nextBtn = document.getElementById("nextQuestionBtn");
+      if (nextBtn) nextBtn.addEventListener("click", nextQuestion);
+
+      const restartBtn = document.getElementById("restartQuizBtn");
+      if (restartBtn) restartBtn.addEventListener("click", startQuiz);
+    }
+
+    function initTheme() {
+      const saved = localStorage.getItem("wwii-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+    }
+
+    function updateThemeIcon() {
+      const isDark = document.documentElement.dataset.theme === "dark";
+      document.getElementById("themeIcon").innerHTML = isDark
+        ? '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>'
+        : '<path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"></path>';
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.dataset.theme || "light";
+      const next = current === "light" ? "dark" : "light";
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem("wwii-theme", next);
+      updateThemeIcon();
+    }
+
+    let searchTimeout;
+    searchInput.addEventListener("input", (event) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        state.filter = event.target.value;
+        renderTerms();
+      }, 150);
+    });
+
+    clearSearchBtn.addEventListener("click", () => {
+      state.filter = "";
+      searchInput.value = "";
+      renderTerms();
+      searchInput.focus();
+    });
+
+    navButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        setView(button.dataset.viewTarget);
+      });
+    });
+
+    heroTermsBtn.addEventListener("click", () => setView("terms"));
+    heroQuizBtn.addEventListener("click", () => {
+      setView("quiz");
+      if (!state.quiz) renderQuiz();
+    });
+
+    themeToggle.addEventListener("click", toggleTheme);
+
+    initTheme();
+    updateThemeIcon();
+    renderTerms();
+    renderQuiz();
+  </script>
+</body>
+</html>
